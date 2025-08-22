@@ -14,7 +14,6 @@ const symbols='~`!@#$%^&*()_-+={[}]|:;"<,>.?/';
 let password="";
 let passwordLength="10";
 let checkCount="0";
-
 handleSlider();
 function handleSlider(){
     inputSlider.value=passwordLength;
@@ -138,4 +137,5 @@ generateBtn.addEventListener('click',()=>{
     password=shufflePassword(Array.from(password));
     passwordDisplay.value=password;
     calcStrength();
+
 })
