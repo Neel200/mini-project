@@ -12,21 +12,25 @@ const generateBtn=document.querySelector(".Button");
 const allCheckBox=document.querySelectorAll("input[type=checkbox]");
 const symbols='~`!@#$%^&*()_-+={[}]|:;"<,>.?/';
 let password="";
-let passwordLength="10";
-let checkCount="0";
+let passwordLength=10;
+let checkCount=0;
 handleSlider();
 function handleSlider(){
     inputSlider.value=passwordLength;
     lengthDisplay.innerText=passwordLength;
+    const min=inputSlider.min;
+    const max=inputSlider.max;
+    inputSlider.style.backgroundSize=((passwordLength-min)*100/(max-min))+"% 100%";
 }
 function setIndicator(color){
-    indicator.style.backgroundColor="color";
+    indicator.style.backgroundColor=color;
+    indicator.style.boxShadow=`0 0 10px ${color}`;
 }
 function getRndInteger(min,max){
-    return Math.floor(Math.random()*[max-min])+min;
+    return Math.floor(Math.random()*(max-min))+min;
 }
 function generateRandomNumber(){
-    return getRndInteger(0,9);
+    return getRndInteger(0,10);
 }
 function generateLowerCase(){
     return String.fromCharCode(getRndInteger(97,123));
@@ -96,7 +100,7 @@ copyBtn.addEventListener('click',()=>{
 })
 function shufflePassword(array){
     for (let i=array.length-1;i>0;i--) {
-        const j=Math.floor(Math.random()*(i + 1));
+        const j=Math.floor(Math.random()*(i+1));
         const temp=array[i];
         array[i]=array[j];
         array[j]=temp;
@@ -137,5 +141,4 @@ generateBtn.addEventListener('click',()=>{
     password=shufflePassword(Array.from(password));
     passwordDisplay.value=password;
     calcStrength();
-
 })
