@@ -23,7 +23,7 @@ function handleSlider(){
     inputSlider.style.backgroundSize=((passwordLength-min)*100/(max-min))+"% 100%";
 }
 function setIndicator(color){
-    indicator.style.backgroundColor=color;
+    indicator.style.background=color;
     indicator.style.boxShadow=`0 0 10px ${color}`;
 }
 function getRndInteger(min,max){
